@@ -29,5 +29,17 @@
     "postStartCommand": "pnpm run start:dev",
     // Configure tool-specific properties.
     // "customizations": {},
-    "remoteUser": "root"
+    "remoteUser": "root",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "thang-nm.catppuccin-perfect-icons",
+                "Catppuccin.catppuccin-vsc",
+                "esbenp.prettier-vscode",
+                "Tyriar.sort-lines",
+                "ms-azuretools.vscode-docker",
+                "Prisma.prisma"
+            ]
+        }
+    }
 }
