@@ -16,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@utils/utils": [
+        "libs/utils/src"
+      ],
+      "@common/common": [
+        "libs/common/src"
+      ]
+    }
   }
 }
