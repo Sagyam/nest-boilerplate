@@ -7,17 +7,17 @@
   "license": "GPL-3.0-only",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/apps/nest-boilerplate/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "jest --config ./apps/nest-boilerplate/test/jest-e2e.json",
     "db": "docker-compose -f compose.db.yaml up -d",
     "monitor": "docker-compose -f compose.mon.yaml up -d",
     "studio": "npx prisma studio"
@@ -49,6 +49,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "nodemailer": "^6.9.15",
+    "prom-client": "^15.1.3",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "swagger-themes": "^1.4.3",
@@ -85,7 +86,7 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
@@ -93,8 +94,17 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/libs/",
+      "<rootDir>/apps/"
+    ],
+    "moduleNameMapper": {
+      "^@utils/utils(|/.*)$": "<rootDir>/libs/utils/src/$1",
+      "^@common/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@prisma/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1"
+    }
   },
   "readme": "README.md"
 }
